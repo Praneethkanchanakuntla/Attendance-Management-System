@@ -1,0 +1,32 @@
+{% extends "base.html" %} 
+
+{% block content %}  
+<div class="row">
+    <div class="col-sm-6 mb-3 mb-sm-0">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">View Messages</h5>
+          <p class="card-text">See Messages send my students</p>
+          <a href="#" class="btn btn-primary">View Messages</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Student Over View</h5>
+          <p class="card-text">We can see Over all Over view of Students </p>
+          <a href="{{url_for('student_overview')}}" class="btn btn-primary">Student Over view</a>
+        </div>
+      </div>
+    </div>
+  </div>
+<style>
+    .row{
+        margin-top: 10em;
+        margin-left: 4cm;
+        margin-right: 4cm;
+    }
+</style>
+
+{% endblock %}

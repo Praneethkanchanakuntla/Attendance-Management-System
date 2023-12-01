@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% for i in prof %}
+<div class="card">
+  <div class="professor">
+  <div class="message_class"> <a class="btn btn-warning"   href="{{url_for('Action_center')}}">Action center</a></div>
+    <h5 class="card-header">Professor Details</h5>
+  </div>
+    <div class="card-body">
+      <h5 class="card-title">{{i.name}}</h5>
+      <p class="card-text">{{i.professor_email}}</p>
+      <p class="card-text">{{i.professor_id}}</p>
+    </div>
+  </div>
+ 
+{% endfor %}
+
+<br>
+<br>
+
+<div class="table_div">
+<center>
+<table class="table table-success table-striped">
+    <thead>
+        <tr>
+            <th>
+                Course
+            </th>
+            <th> Date </th>
+            <th>Code</th>
+            <th>
+                Action
+            </th>
+        </tr>
+    </thead>
+    {% for i in prof %}
+       
+    <tbody>
+        <form action="{{url_for('Set_attendance_code')}}" method="POST">
+        <tr>
+<td>
+            <select  name="course" class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                {% for j in i.subject_taught %}
+                <option value={{j}}>{{j}}</option>
+                {% endfor %}
+              </select>
+              
+            </td>
+            <td> <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker" inline="true">
+                <input placeholder="Select date" name="date" type="date" id="example" class="form-control">
+                <i class="fas fa-calendar input-prefix"></i>
+              </div></td>
+            <td> <input placeholder="Select Code"  name="code" type="text" id="example" class="form-control"></td>
+            <td> <button id="sub" class="btn btn-primary" type="submit ">Set Code</button></td>
+        </tr>
+    </form>
+    </tbody>
+   
+{% endfor %}
+  </table>
+</center>
+</div>
+<style>
+.table_div
+{
+    margin-left: 10em;
+    margin-right: 10em;
+}
+.message_class{
+  margin-left:30cm;
+}
+   
+</style>
+
+{% endblock %}

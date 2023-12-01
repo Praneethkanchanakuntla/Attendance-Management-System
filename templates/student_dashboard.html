@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="card shadow-lg rounded-lg">
+    <div class="card-body">
+      <h5 class="card-title mb-3">User Details</h5>
+      {% for i in user %}
+      <div class="left_user">
+      
+        <a href="{{url_for('edit_profile')}}" method="post">edit profile</a>
+      </div>
+      <div class="d-flex justify-content-between align-items-center">
+        <p class="card-text m-0"><strong>User ID:</strong>{{i.user_id}}</p>
+        <p class="card-text m-0"><strong>User Email :</strong>{{i.user_email}} </p>
+      </div>
+      
+      {% endfor %}
+
+    </div>
+  </div>
+
+ 
+
+  <br>
+  <br> 
+  <table class="table">
+    <thead>
+      <tr>  
+        <th scope="col">Course Code</th>
+        <th scope="col">Day</th>
+        <th scope="col">Time</th>
+        <th scope="col">Code</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <form action="{{url_for('attendance_check')}}" method="post">
+
+      
+    <tbody>
+<tr>
+
+{% for i in student_enrollments %}
+{% for j in i['user_enrollments'] %}
+<td> <select  name="course" class="form-select" id="floatingSelect" aria-label="Floating label select example">
+
+  <option value={{ j.subject_id}}>{{j.subject_id}}</option>
+</select>  </td>
+{% endfor %}
+{% endfor %}
+
+{% for i in tt_table %}
+<td>{{i.day}}</td>
+<td>{{i.start_time}} {{"to"}}{{i.end_time}}</td>
+
+<td><input placeholder="Select Code"  name="code" type="text" id="example" class="form-control"></td>
+<td><button id="sub" class="btn btn-primary" type="submit ">attend</button></td></td>
+</form>
+</tr>
+</tbody>
+  </table>
+
+{% endfor %}
+<style>
+  .left_user
+  {
+    margin-left: 30cm;
+  }
+</style>
+{% endblock %}

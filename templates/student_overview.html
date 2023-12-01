@@ -1,0 +1,47 @@
+{% extends "base.html" %}  
+{% block content %}  
+
+{% for i in data %} 
+<div class="select_course">
+    <form action="{{url_for('student_properties')}}" method="POST">
+   <h5><label for="exampleControl" class="form-label">Student Overview</label> </h5> 
+   <select  name="course" class="form-select" id="floatingSelect" aria-label="Floating label select example">
+    <option selected>Select the Course</option>
+{% for j in i.subject_taught %}  
+    <option value={{j}}>{{j}}</option>
+{% endfor %}
+</select>
+</div>
+{% endfor %}
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">student Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Attendance</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        {% for i in enrol %}
+        <th scope="row">1</th>
+        <td>{i.student_id}</td>
+        {% endfor %}
+        {% for j in student %}
+        <td>{j.user_name}</td>
+        {% endfor %}
+        <td>{hello}}</td>
+        
+      </tr>
+    </tbody>
+  </table>
+</form>
+<style>
+    .select_course{
+        margin-top: 20px;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+</style>
+{% endblock %}

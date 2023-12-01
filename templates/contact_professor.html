@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<figure class="text-center">
+    <blockquote class="blockquote">
+        <br>
+      <h4>Message Me here </h4>
+    </blockquote>
+    <figcaption class="blockquote-footer">
+      Professor of <cite title="Source Title">{{subject_id}}</cite>
+    </figcaption>
+  </figure>
+  <form action="{{url_for('send_message_student')}}" method="POST">
+    <div class="msg">
+    <input class="form-control" name="course" type="text" value={{subject_id}} aria-label="readonly input example" readonly>
+  <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label">Message here</label>
+    <textarea name='msg' class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <br>
+    <button id="sub" class="btn btn-primary" type="submit ">Send</button>
+  </div>
+</div>
+</form>
+<style>
+    .msg{
+        margin-left:5cm;
+        margin-top:20px;
+        margin-right:5cm;
+    }
+</style>
+{% endblock %}
